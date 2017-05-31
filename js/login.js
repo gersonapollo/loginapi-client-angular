@@ -1,5 +1,3 @@
-
-angular.module("loginclient", []);
 angular.module("loginclient").controller('loginclientCtrl', ['$scope', '$http', function($scope, $http) {
 	$scope.app = "Login Client";
 	$scope.aut;
