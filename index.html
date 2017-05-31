@@ -1,0 +1,52 @@
+<html ng-app="loginclient">
+<head>
+	<title>Login Client</title>
+	<link rel="stylesheet" type="text/css" href="lib/bootstrap/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="lib/angular/angular.js"></script>
+	<script src="js/login.js"></script>
+	
+</head>
+
+<body ng-controller="loginclientCtrl">
+
+	<section class="jumbotron">
+		<h3 ng-bind="app"></h3>
+
+	
+		<input class="form-control" type="text" ng-model="usuario.email" placeholder="E-mail"/>
+		<input class="form-control" type="password" ng-model="usuario.senha" placeholder="Senha"/>	
+		<button class="btn btn-success btn-block" ng-click="efetuarLogin(usuario)">Efetuar Login</button>
+		<button class="btn btn-primary btn-block" ng-click="perfilUsuario(usuario)">Perfil Usuario</button>
+		<a class="btn btn-primary btn-block" href="cadastro.html">Cadastrar Usuario</a>
+
+		
+
+	</section>
+	<section class="jumbotron" visible="false">
+		{{mensagem}}
+		<h3 class="subform">{{subform}}</h3>
+		<span class="input-group" id="nome">ID: {{usuario.id}}</span></br>
+		<span class="input-group" id="nome">Nome: {{usuario.nome}}</span></br>
+		<span class="input-group" id="nome">E-mail: {{usuario.email}}</span></br>
+		<span class="input-group" id="nome">Token: {{usuario.token}}</span></br>
+		<span class="input-group" id="nome">Data Criação: {{usuario.dataCriacao}}</span></br>
+		<span class="input-group" id="nome">Data Atualização: {{usuario.dataAtualizacao}}</span></br>
+		<span class="input-group" id="nome">Último Login: {{usuario.ultimoLogin}}</span></br>
+		<h3 class="lista-telefones">Telefones:</h3>
+		<table class="table ">
+			<tr>
+				<th>DDD</th>
+				<th>Telefone</th>
+			</tr>
+			<tr ng-repeat="telefone in usuario.telefones">
+				<td>{{telefone.ddd}}</td>
+				<td>{{telefone.numero}}</td>
+			</tr>
+		</table>
+		<hr>
+
+	</section>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<html ng-app="loginclient">
+<head>
+	<title>Login Client</title>
+	<link rel="stylesheet" type="text/css" href="lib/bootstrap/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="lib/angular/angular.js"></script>
+	<script src="js/login.js"></script>
+</head>
+
+<body ng-controller="loginclientCtrl">
+
+	<section class="jumbotron">
+		<h3 ng-bind="app"></h3>
+
+		<div class="dados-pessoais">
+			<div class="input-group">
+			  <span class="input-group-addon" id="nome">Nome:</span>
+			  <input type="text" class="form-control" ng-model="usuario.nome" placeholder="Nome" aria-describedby="nome">
+			</div>
+			<div class="input-group">
+			  <span class="input-group-addon" id="email">Nome:</span>
+			  <input type="text" class="form-control" ng-model="usuario.email" placeholder="Email" aria-describedby="email">
+			</div>
+			<div class="input-group">
+			  <span class="input-group-addon" id="senha">Senha:</span>
+			  <input type="password" class="form-control" ng-model="usuario.senha" placeholder="Senha" aria-describedby="senha">
+			</div>
+			<hr>
+			<div class="input-group">
+			  <span class="input-group-addon" id="ddd">Nome:</span>
+			  <input type="text" class="form-control" ng-model="telefone.ddd" placeholder="DDD" aria-describedby="ddd">
+			</div>
+			<div class="input-group">
+			  <span class="input-group-addon" id="numero">Nome:</span>
+			  <input type="text" class="form-control" ng-model="telefone.numero" placeholder="Numero" aria-describedby="numero">
+			</div>
+		</div>
+		</br>
+		<button class="btn btn-primary btn-block" ng-click="cadastrarTelefone(telefone)">Incluir Telefone</button>
+		<table class="table table-striped">
+			<tr>
+				<th>Nome</th>
+				<th>Telefone</th>
+			</tr>
+			<tr ng-repeat="telefone in telefones">
+				<td>{{telefone.ddd}}</td>
+				<td>{{telefone.numero}}</td>
+			</tr>
+		</table>
+		<hr>
+		
+		<button class="btn btn-success btn-block" ng-click="cadastrarUsuario(usuario)">Cadastrar Usuario</button>
+		<a class="btn btn-primary btn-block" href="index.html">Retornar ao Login</a>
+
+
+		
+
+	</section>
+	<section class="jumbotron" visible="false">
+		{{mensagem}}
+		<h3 class="subform">{{subform}}</h3>
+		<span class="input-group" id="nome">ID: {{usuario.id}}</span></br>
+		<span class="input-group" id="nome">Nome: {{usuario.nome}}</span></br>
+		<span class="input-group" id="nome">E-mail: {{usuario.email}}</span></br>
+		<span class="input-group" id="nome">Token: {{usuario.token}}</span></br>
+		<span class="input-group" id="nome">Data Criação: {{usuario.dataCriacao}}</span></br>
+		<span class="input-group" id="nome">Data Atualização: {{usuario.dataAtualizacao}}</span></br>
+		<span class="input-group" id="nome">Último Login: {{usuario.ultimoLogin}}</span></br>
+		<h3 class="lista-telefones">Telefones:</h3>
+		<table class="table ">
+			<tr>
+				<th>DDD</th>
+				<th>Telefone</th>
+			</tr>
+			<tr ng-repeat="telefone in usuario.telefones">
+				<td>{{telefone.ddd}}</td>
+				<td>{{telefone.numero}}</td>
+			</tr>
+		</table>
+		<hr>
+
+	</section>
+
+</body>
+</html>
