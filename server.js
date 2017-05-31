@@ -2,7 +2,7 @@ var express = require("express"),
     app = express(),
  
     bodyParser = require('body-parser'),
-    hostname = process.env.HOSTNAME || 'localhost',
+    hostname = process.env.HOSTNAME || 'https://peaceful-peak-35371.herokuapp.com/',
     port = parseInt(process.env.PORT, 10) || 4567;
  
  
@@ -19,6 +19,6 @@ app.get("/", function(req, res) {
     res.redirect("/index.html");
 });
  
-console.log("Simple server listening at http://" + hostname + ":" + port);
+console.log("Simple server listening at http://" + hostname );
  
 app.listen(port, hostname);
