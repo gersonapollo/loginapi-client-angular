@@ -1,24 +1,20 @@
-var express = require("express"),
-    app = express(),
- 
-    bodyParser = require('body-parser'),
-    hostname = process.env.HOSTNAME || 'https://peaceful-peak-35371.herokuapp.com/',
-    port = parseInt(process.env.PORT, 10) || 4567;
- 
- 
-app.use(bodyParser.json());
- 
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
- 
-app.use(express.static(__dirname));
- 
+var express = require('express');
+var app = express();
 
-app.get("/", function(req, res) {
-    res.redirect("/index.html");
+app.set('port', (process.env.PORT || 5000));
+
+app.use(express.static(__dirname + '/public'));
+
+// views is directory for all template files
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+
+app.get('/', function(request, response) {
+  response.render('pages/index');
 });
- 
-console.log("Simple server listening at http://" + hostname );
- 
-app.listen(port, hostname);
+
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});
+
+
